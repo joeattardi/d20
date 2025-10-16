@@ -1,17 +1,22 @@
 {
-  "name": "d20",
-  "version": "1.0.0",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "discord.js": "^14.23.2",
-    "dotenv": "^17.2.3"
-  }
+    "name": "d20",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "deploy:commands": "node deploy-commands.js",
+        "format": "prettier --write .",
+        "dev": "node --watch index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "discord.js": "^14.23.2",
+        "dotenv": "^17.2.3"
+    },
+    "devDependencies": {
+        "prettier": "^3.6.2"
+    }
 }
