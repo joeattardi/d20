@@ -7,8 +7,8 @@ const __dirname = path.dirname(
 );
 
 export async function loadModules(
-    moduleDirectory,
-    filterFunc = file => file.endsWith('.js'),
+    moduleDirectory: string,
+    filterFunc = (file: string) => file.endsWith('.js'),
 ) {
     const modulesPath = path.resolve(__dirname, moduleDirectory);
     const files = await fs.readdir(modulesPath);

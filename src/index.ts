@@ -1,11 +1,16 @@
-import { Client, Collection, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
+import { GatewayIntentBits } from 'discord.js';
 import dotenv from 'dotenv';
+import { CommandClient } from './CommandClient.js';
 import { loadCommands } from './commands.js';
 import { loadEvents } from './events.js';
 
 dotenv.config();
 
-const client = new Client({
+if (!process.env.DISCORD_TOKEN) {
+    throw new Error('DISCORD_TOKEN is not defined in environment variables.');
+}
+
+const client = new CommandClient({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
@@ -13,7 +18,6 @@ const client = new Client({
     ]
 });
 
-client.commands = new Collection();
 await loadEvents(client);
 await loadCommands(client);
 

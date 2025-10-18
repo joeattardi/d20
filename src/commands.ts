@@ -1,6 +1,7 @@
+import type { CommandClient } from './CommandClient.js';
 import { loadModules } from './loader.js';
 
-export async function loadCommands(client) {
+export async function loadCommands(client: CommandClient) {
     const commands = await loadModules('commands');
     
     commands.forEach(command => {
