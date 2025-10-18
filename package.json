@@ -4,9 +4,9 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "deploy:commands": "node deploy-commands.js",
+        "deploy:commands": "node src/deployCommands.js",
         "format": "prettier --write .",
-        "dev": "node --watch index.js"
+        "dev": "node --watch src/index.js"
     },
     "keywords": [],
     "author": "",
