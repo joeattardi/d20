@@ -3,8 +3,8 @@ import { loadModules } from './loader.js';
 
 export async function loadCommands(client: CommandClient) {
     const commands = await loadModules('commands');
-    
-    commands.forEach(command => {
+
+    commands.forEach((command) => {
         if ('data' in command && 'execute' in command) {
             client.commands.set(command.data.name, command);
         } else {
