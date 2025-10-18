@@ -6,7 +6,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export async function loadModules(
     moduleDirectory: string,
-    filterFunc = (file: string) => file.endsWith('.js')
+    filterFunc = (file: string) => file.endsWith('.ts')
 ) {
     const modulesPath = path.resolve(__dirname, moduleDirectory);
     const files = await fs.readdir(modulesPath);

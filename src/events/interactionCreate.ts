@@ -1,12 +1,15 @@
-import { Events } from 'discord.js';
+import { Events, MessageFlags, type Interaction } from 'discord.js';
+import type { CommandClient } from '../CommandClient.js';
 
 export const name = Events.InteractionCreate;
-export async function execute(interaction) {
+export async function execute(interaction: Interaction) {
     if (!interaction.isChatInputCommand()) {
         return;
     }
 
-    const command = interaction.client.commands.get(interaction.commandName);
+    const client = interaction.client as CommandClient;
+
+    const command = client.commands.get(interaction.commandName);
 
     if (!command) {
         console.error(`No command matching ${interaction.commandName} was found.`);
