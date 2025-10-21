@@ -1,4 +1,4 @@
-import { GatewayIntentBits } from 'discord.js';
+import { Events, GatewayIntentBits } from 'discord.js';
 import dotenv from 'dotenv';
 import { CommandClient } from './CommandClient.js';
 import { loadCommands } from './commands.js';
@@ -21,4 +21,4 @@ const client = new CommandClient({
 await loadEvents(client);
 await loadCommands(client);
 
-client.login(process.env.DISCORD_TOKEN);
+await client.login(process.env.DISCORD_TOKEN);

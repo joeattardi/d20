@@ -1,4 +1,4 @@
-import { CommandInteraction, SlashCommandBuilder, type Interaction, type RepliableInteraction } from 'discord.js';
+import { TextDisplayBuilder, MessageFlags, SlashCommandBuilder, type Interaction, ContainerBuilder } from 'discord.js';
 
 export const data = new SlashCommandBuilder()
     .setName('roll')
@@ -32,7 +32,16 @@ export async function execute(interaction: Interaction) {
                 total += Number(modifier);
             }
 
-            await interaction.reply(`${interaction.user.displayName} rolled a total of ${total}!`);
+            const container = new ContainerBuilder();
+            container.setAccentColor(0x0099ff);
+            container.addTextDisplayComponents(textDisplay => textDisplay.setContent(`## 🎲 Dice Roll: ${expression}`));
+            container.addTextDisplayComponents(textDisplay => textDisplay.setContent(`<@${interaction.user.id}> rolled ${expression} and got: `));
+            container.addTextDisplayComponents(textDisplay => textDisplay.setContent(`# ${total}`));
+
+            await interaction.reply({
+                components: [container],
+                flags: MessageFlags.IsComponentsV2
+            });
         }
     }
 }
